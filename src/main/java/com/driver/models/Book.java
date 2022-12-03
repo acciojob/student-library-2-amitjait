@@ -46,5 +46,13 @@ public class Book {
 
     public Book() {
     }
+
+    public Book(String name, Genre genre, Author author) {
+        this.name = name;
+        this.genre = genre;
+        this.author = author;
+    }
+
+    //    Book(java.lang.String,com.driver.models.Genre,com.driver.models.Author)
 }
 
