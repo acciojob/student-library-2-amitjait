@@ -24,18 +24,46 @@ public class BookService {
 
         List<Book> filteredBook = new ArrayList<>();
 
+//        all parameters are null or available is true
+        if(genre == null && author == null){
+            if(available == false){
+                for(Book book: books){
+                    if(book.isAvailable() == false){
+                        filteredBook.add(book);
+                    }
+                }
+            }else{
+                for(Book book: books){
+                    if(book.isAvailable() == true){
+                        filteredBook.add(book);
+                    }
+                }
+            }
+
+            return filteredBook;
+        }
+
+//      if  author is null
         if(author == null){
             for(Book book: books){
                 if(book.getGenre().equals(genre) && book.isAvailable() == available){
                     filteredBook.add(book);
                 }
             }
-        }else{
+
+            return filteredBook;
+        }
+
+
+//      if genre is null
+        if(genre == null){
             for(Book book: books){
-                if(book.getGenre().equals(genre) && book.isAvailable() == available && book.getAuthor().equals(author)){
+                if(book.getAuthor().equals(author) && book.isAvailable() == available){
                     filteredBook.add(book);
                 }
             }
+
+            return filteredBook;
         }
 
         return filteredBook;
