@@ -1,6 +1,9 @@
 package com.driver.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -9,6 +12,9 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Data
+@AllArgsConstructor
+@Builder
 public class Card {
 
     @Id
@@ -19,9 +25,11 @@ public class Card {
     @JsonIgnoreProperties("card")
     private Student student;
 
+    @Column
     @CreationTimestamp
     private Date createdOn;
 
+    @Column
     @UpdateTimestamp
     private Date updatedOn;
 
