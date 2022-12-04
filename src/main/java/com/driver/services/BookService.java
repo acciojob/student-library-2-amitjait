@@ -1,6 +1,7 @@
 package com.driver.services;
 
 import com.driver.models.Book;
+import com.driver.models.Genre;
 import com.driver.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,7 +47,7 @@ public class BookService {
 //      if  author is null
         if(author == null){
             for(Book book: books){
-                if(book.getGenre().equals(genre) && book.isAvailable() == available){
+                if(book.getGenre()== Genre.valueOf(genre) && book.isAvailable() == available){
                     filteredBook.add(book);
                 }
             }
@@ -58,7 +59,7 @@ public class BookService {
 //      if genre is null
         if(genre == null){
             for(Book book: books){
-                if(book.getAuthor().equals(author) && book.isAvailable() == available){
+                if(book.getAuthor().getName().equals(author) && book.isAvailable() == available){
                     filteredBook.add(book);
                 }
             }
