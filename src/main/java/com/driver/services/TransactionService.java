@@ -47,7 +47,7 @@ public class TransactionService {
 
         if(cardRepository5.existsById(cardId)){
             card = cardRepository5.findById(cardId).get();
-            if(!card.getCardStatus().equals("ACTIVATED")){
+            if(!card.getCardStatus().equals(CardStatus.ACTIVATED)){
                 throw new Exception("Book limit has reached for this card");
             }
         }else{
@@ -55,6 +55,7 @@ public class TransactionService {
         }
 
         List<Book> bookList = card.getBooks();
+
         if((bookList.size() >= max_allowed_books)){
             throw new Exception("Book limit has reached for this card");
         }
@@ -75,6 +76,7 @@ public class TransactionService {
 
         // transaction
         Transaction transaction = new Transaction();
+
 
         transaction.setBook(book);
         transaction.setCard(card);
